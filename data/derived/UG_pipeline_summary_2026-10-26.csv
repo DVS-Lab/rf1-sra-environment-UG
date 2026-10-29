@@ -1,0 +1,2 @@
+"project","analysis_date","participants_entering_pm25","participants_published","participants_excluded_incomplete_pm25","approved_columns"
+"UG","2026-10-26",116,116,0,"rf1_id;sub_age;gender;ecog_score;mspss_sum;adi_natrank;pm25_mean_2013_2023"

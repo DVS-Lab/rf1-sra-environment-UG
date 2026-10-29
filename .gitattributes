@@ -1,0 +1,8 @@
+*.sh text eol=lf
+*.R text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.csv text eol=lf
+*.tsv text eol=lf
+*.fsf text eol=lf
+*.xlsx binary

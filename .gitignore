@@ -222,6 +222,23 @@ __marimo__/
 # potentially private
 .heudiconv
 
+# Participant privacy guardrails. Public-safe derived data are explicitly kept
+# under data/derived; raw and linkage artifacts must never enter this repository.
+private data/
+private-data/
+raw/
+intermediate/
+**/*IslandScreener*
+**/*screener_export*
+**/*geocodio*
+**/*regeocode*
+**/*_private_*
+**/*address*
+**/*coordinates*
+**/*zip9*
+**/*linkage_audit*
+**/*dob*
+
 # imaging output
 bids/**/*.nii.gz
 derivatives/fsl/
