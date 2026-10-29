@@ -4,7 +4,8 @@
 Run through build_L3_inputs.sh from this repository's code directory. The script
 intersects the linked paper cohort with the validated session-01 UGR handoff,
 preserves its selected one- or two-run input, and keeps subject order identical
-across exact contrast inputs, frozen run metrics, and the covariate workbook.
+across the selected-input manifest, frozen run metrics, and the covariate
+workbook.
 """
 
 from __future__ import annotations
@@ -268,16 +269,6 @@ def write_inputs(args: argparse.Namespace) -> None:
         writer.writeheader()
         for subject in final_subjects:
             writer.writerows(handoff[subject])
-    args.contrast_output_dir.mkdir(parents=True, exist_ok=False)
-    contrast_fields = ("subject", "cope", "varcope", "mask", "dof", "input_runs", "level", "feat_dir")
-    for contrast in EXPECTED_CONTRASTS:
-        output = args.contrast_output_dir / f"contrast-{contrast:02d}.tsv"
-        with output.open("w", newline="", encoding="utf-8") as handle:
-            writer = csv.DictWriter(handle, fieldnames=contrast_fields, delimiter="\t", lineterminator="\n")
-            writer.writeheader()
-            for subject in final_subjects:
-                row = handoff[subject][contrast - 1]
-                writer.writerow({field: row[field] for field in contrast_fields})
     with args.final_qc_output.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.writer(handle, lineterminator="\n")
         writer.writerow(("subject", "tsnr", "fd_mean", "brain_coverage_pct", "runs", "level", "selection_policy"))
@@ -449,7 +440,6 @@ def parse_args() -> argparse.Namespace:
     inputs.add_argument("--run-decisions", type=Path, required=True)
     inputs.add_argument("--subjects-output", type=Path, required=True)
     inputs.add_argument("--selected-output", type=Path, required=True)
-    inputs.add_argument("--contrast-output-dir", type=Path, required=True)
     inputs.add_argument("--final-qc-output", type=Path, required=True)
     inputs.add_argument("--exclusions-output", type=Path, required=True)
     inputs.set_defaults(function=write_inputs)

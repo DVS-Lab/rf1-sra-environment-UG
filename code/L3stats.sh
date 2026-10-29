@@ -12,9 +12,8 @@ fi
 # ensure paths are correct irrespective from where user runs the script
 scriptdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 maindir="$(dirname "$scriptdir")"
-l3dir="${maindir}/data/derived/l3"
-subjects="${l3dir}/L3-act-subjects.txt"
-covariates_file="${l3dir}/L3-act-covariates.xlsx"
+subjects="${scriptdir}/L3-act-subjects.txt"
+covariates_file="${scriptdir}/L3-act-covariates.xlsx"
 
 # study-specific inputs and general output folder
 

@@ -213,14 +213,16 @@ bash code/build_L3_inputs.sh
 
 The builder fails rather than silently excluding a participant when exact
 handoff files, run metrics, BIDS metadata, or required covariates are missing.
-It writes the following aligned outputs to `data/derived/l3`:
+It writes the following aligned outputs to `code`:
 
 - `L3-act-subjects.txt`: final participants in handoff order;
 - `L3-act-selected-inputs.tsv`: exact retained handoff rows;
-- `L3-act-contrast-inputs/contrast-01.tsv` through `contrast-17.tsv`;
 - `L3-act-final-qc.csv`: tSNR, mean FD, coverage, selected runs, and level;
 - `L3-act-covariates.xlsx`: subject-aligned centered covariates; and
 - `L3-act-exclusions.tsv`: linked-cohort participants not selected at L3.
+
+The builder does not create separate per-contrast manifests; all exact
+retained rows are already present in `code/L3-act-selected-inputs.tsv`.
 
 The covariate workbook includes centered ECog, national ADI rank, MSPSS,
 2013–2023 mean PM2.5, age, tSNR, and mean FD; centered gender indicators; and

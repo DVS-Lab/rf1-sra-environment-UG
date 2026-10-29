@@ -13,13 +13,11 @@ analysis_file="${ANALYSIS_FILE:-${PROJECT_ROOT}/data/derived/UG_analysis_data_20
 helper="${SCRIPT_DIR}/build_L3_covariates.py"
 
 l3_dir="${PROJECT_ROOT}/data/derived/l3"
-mkdir -p "$l3_dir"
-subjects_file="${l3_dir}/L3-act-subjects.txt"
-selected_file="${l3_dir}/L3-act-selected-inputs.tsv"
-contrast_dir="${l3_dir}/L3-act-contrast-inputs"
-final_qc_file="${l3_dir}/L3-act-final-qc.csv"
-covariates_file="${l3_dir}/L3-act-covariates.xlsx"
-exclusions_file="${l3_dir}/L3-act-exclusions.tsv"
+subjects_file="${SCRIPT_DIR}/L3-act-subjects.txt"
+selected_file="${SCRIPT_DIR}/L3-act-selected-inputs.tsv"
+final_qc_file="${SCRIPT_DIR}/L3-act-final-qc.csv"
+covariates_file="${SCRIPT_DIR}/L3-act-covariates.xlsx"
+exclusions_file="${SCRIPT_DIR}/L3-act-exclusions.tsv"
 
 for required in "$analysis_file" "$SELECTED_INPUTS" "$RUN_DECISIONS" "$helper"; do
     [[ -r "$required" ]] || {
@@ -47,7 +45,6 @@ python3 "$helper" inputs \
     --run-decisions "$RUN_DECISIONS" \
     --subjects-output "${tmpdir}/subjects.txt" \
     --selected-output "${tmpdir}/selected-inputs.tsv" \
-    --contrast-output-dir "${tmpdir}/contrast-inputs" \
     --final-qc-output "${tmpdir}/final-qc.csv" \
     --exclusions-output "${tmpdir}/exclusions.tsv"
 
@@ -65,25 +62,24 @@ selected_n="$(awk 'NR > 1 {print $1}' "${tmpdir}/selected-inputs.tsv" | sort -u 
     exit 1
 }
 
-for contrast_file in "${tmpdir}"/contrast-inputs/contrast-*.tsv; do
-    row_n="$(( $(wc -l < "$contrast_file") - 1 ))"
-    [[ "$subject_n" -eq "$row_n" ]] || {
-        echo "ERROR: $(basename "$contrast_file") has $row_n rows; expected $subject_n." >&2
-        exit 1
-    }
-done
-
 mv "${tmpdir}/subjects.txt" "$subjects_file"
 mv "${tmpdir}/selected-inputs.tsv" "$selected_file"
-rm -rf -- "$contrast_dir"
-mv "${tmpdir}/contrast-inputs" "$contrast_dir"
 mv "${tmpdir}/final-qc.csv" "$final_qc_file"
 mv "${tmpdir}/covariates.xlsx" "$covariates_file"
 mv "${tmpdir}/exclusions.tsv" "$exclusions_file"
 
+# Remove outputs created by the earlier layout after the replacement files are
+# safely in place. The per-contrast manifests duplicated selected-inputs.tsv.
+rm -rf -- "${l3_dir}/L3-act-contrast-inputs"
+rm -f -- \
+    "${l3_dir}/L3-act-subjects.txt" \
+    "${l3_dir}/L3-act-selected-inputs.tsv" \
+    "${l3_dir}/L3-act-final-qc.csv" \
+    "${l3_dir}/L3-act-covariates.xlsx" \
+    "${l3_dir}/L3-act-exclusions.tsv"
+
 echo "Sophia UGR L3 inputs complete (session ${session}; n=${subject_n})."
 echo "Subjects:   $subjects_file"
 echo "Inputs:     $selected_file"
-echo "Contrasts:  $contrast_dir"
 echo "Covariates: $covariates_file"
 echo "Exclusions: $exclusions_file"
