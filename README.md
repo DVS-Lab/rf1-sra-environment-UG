@@ -216,13 +216,17 @@ handoff files, run metrics, BIDS metadata, or required covariates are missing.
 It writes the following aligned outputs to `code`:
 
 - `L3-act-subjects.txt`: final participants in handoff order;
+- `L3-act-input-paths.txt`: one generic `COPENUM` cope path per participant;
 - `L3-act-selected-inputs.tsv`: exact retained handoff rows;
 - `L3-act-final-qc.csv`: tSNR, mean FD, coverage, selected runs, and level;
 - `L3-act-covariates.xlsx`: subject-aligned centered covariates; and
 - `L3-act-exclusions.tsv`: linked-cohort participants not selected at L3.
 
-The builder does not create separate per-contrast manifests; all exact
-retained rows are already present in `code/L3-act-selected-inputs.tsv`.
+`L3stats.sh` replaces `COPENUM` in the filepath list with the requested cope
+number, confirms that every resulting image is readable, and adds the ordered
+paths to the generated FSL design. The builder does not create separate
+per-contrast manifests; all exact retained rows are already present in
+`code/L3-act-selected-inputs.tsv`.
 
 The covariate workbook includes centered ECog, national ADI rank, MSPSS,
 2013–2023 mean PM2.5, age, tSNR, and mean FD; centered gender indicators; and

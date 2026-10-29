@@ -14,6 +14,7 @@ helper="${SCRIPT_DIR}/build_L3_covariates.py"
 
 l3_dir="${PROJECT_ROOT}/data/derived/l3"
 subjects_file="${SCRIPT_DIR}/L3-act-subjects.txt"
+paths_file="${SCRIPT_DIR}/L3-act-input-paths.txt"
 selected_file="${SCRIPT_DIR}/L3-act-selected-inputs.tsv"
 final_qc_file="${SCRIPT_DIR}/L3-act-final-qc.csv"
 covariates_file="${SCRIPT_DIR}/L3-act-covariates.xlsx"
@@ -62,7 +63,32 @@ selected_n="$(awk 'NR > 1 {print $1}' "${tmpdir}/selected-inputs.tsv" | sort -u 
     exit 1
 }
 
+# Keep one generic UGR cope path per subject in the same order as the subject
+# list. L3stats.sh replaces COPENUM with the requested contrast number.
+awk -F '\t' '
+NR == 1 {
+    for (column = 1; column <= NF; column++) header[$column] = column
+    next
+}
+$(header["contrast"]) == 1 {
+    path = $(header["cope"])
+    sub(/cope[0-9]+\.nii\.gz$/, "copeCOPENUM.nii.gz", path)
+    print path
+}' "${tmpdir}/selected-inputs.tsv" > "${tmpdir}/input-paths.txt"
+
+path_n="$(wc -l < "${tmpdir}/input-paths.txt")"
+[[ "$subject_n" -eq "$path_n" ]] || {
+    echo "ERROR: L3 input-path count does not match the subject count." >&2
+    exit 1
+}
+
+grep -q 'COPENUM' "${tmpdir}/input-paths.txt" || {
+    echo "ERROR: could not create generic UGR cope paths." >&2
+    exit 1
+}
+
 mv "${tmpdir}/subjects.txt" "$subjects_file"
+mv "${tmpdir}/input-paths.txt" "$paths_file"
 mv "${tmpdir}/selected-inputs.tsv" "$selected_file"
 mv "${tmpdir}/final-qc.csv" "$final_qc_file"
 mv "${tmpdir}/covariates.xlsx" "$covariates_file"
@@ -73,6 +99,7 @@ mv "${tmpdir}/exclusions.tsv" "$exclusions_file"
 rm -rf -- "${l3_dir}/L3-act-contrast-inputs"
 rm -f -- \
     "${l3_dir}/L3-act-subjects.txt" \
+    "${l3_dir}/L3-act-input-paths.txt" \
     "${l3_dir}/L3-act-selected-inputs.tsv" \
     "${l3_dir}/L3-act-final-qc.csv" \
     "${l3_dir}/L3-act-covariates.xlsx" \
@@ -80,6 +107,7 @@ rm -f -- \
 
 echo "Sophia UGR L3 inputs complete (session ${session}; n=${subject_n})."
 echo "Subjects:   $subjects_file"
+echo "Paths:      $paths_file"
 echo "Inputs:     $selected_file"
 echo "Covariates: $covariates_file"
 echo "Exclusions: $exclusions_file"

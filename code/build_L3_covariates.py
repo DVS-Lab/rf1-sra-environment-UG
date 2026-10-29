@@ -4,8 +4,8 @@
 Run through build_L3_inputs.sh from this repository's code directory. The script
 intersects the linked paper cohort with the validated session-01 UGR handoff,
 preserves its selected one- or two-run input, and keeps subject order identical
-across the selected-input manifest, frozen run metrics, and the covariate
-workbook.
+across the selected-input manifest, generic FSL filepath list, frozen run
+metrics, and the covariate workbook.
 """
 
 from __future__ import annotations
