@@ -12,9 +12,6 @@ fi
 # ensure paths are correct irrespective from where user runs the script
 scriptdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 maindir="$(dirname "$scriptdir")"
-subjects="${scriptdir}/L3-act-subjects.txt"
-inputpaths="${scriptdir}/L3-act-input-paths.txt"
-covariates_file="${scriptdir}/L3-act-covariates.xlsx"
 
 # study-specific inputs and general output folder
 
@@ -25,21 +22,8 @@ REPLACEME=$3 # act  ppi, nppi # this defines the parts of the path that differ a
 type=${REPLACEME} # For output template
 
 # Variables that change per analysis. Check carefully!
-covariate=brainhealth-environment
-
-for required in "$subjects" "$inputpaths" "$covariates_file"; do
-	if [ ! -r "$required" ]; then
-		echo "Missing required L3 builder output: $required" >&2
-		exit 1
-	fi
-done
-N=$(wc -l < "$subjects")
-Npaths=$(wc -l < "$inputpaths")
-
-if [ "$N" -ne "$Npaths" ]; then
-	echo "Subject and input-path counts do not match." >&2
-	exit 1
-fi
+covariate=adi
+N=116 # update manually to match the selected template
 
 if [[ $analysis == "act" ]]; then
 	template=L3_task-ugr_model-3_type-act_group-${covariate}_n${N}_flame1.fsf
@@ -59,7 +43,6 @@ MAINOUTPUT=${maindir}/derivatives/fsl/L3-act/L3_model-${model}_task-${task}_type
 mkdir -p $MAINOUTPUT
 
 # set outputs and check for existing
-cnum_pad=$(printf "%02d" "$copenum")
 OUTPUT=${MAINOUTPUT}/L3_model-${model}_task-${task}_n${N}-cov-${covariate}-cope-${copenum}_cname-${copename}-${modeltype}
 
 	echo "[$(date)] re-doing: ${OUTPUT}" >> re-runL3.log
@@ -78,18 +61,6 @@ OUTPUT=${MAINOUTPUT}/L3_model-${model}_task-${task}_n${N}-cov-${covariate}-cope-
 	-e 's@REPLACEME@'$REPLACEME'@g' \
 	-e 's@BASEDIR@'$maindir'@g' \
 	<$ITEMPLATE> $OTEMPLATE
-
-	input_index=0
-	while IFS= read -r generic_path; do
-		input_index=$((input_index + 1))
-		input_path="${generic_path/COPENUM/$copenum}"
-		if [ ! -r "$input_path" ]; then
-			echo "Missing UGR cope input: $input_path" >&2
-			exit 1
-		fi
-		printf 'set feat_files(%d) "%s"\n' "$input_index" "$input_path" >> "$OTEMPLATE"
-	done < "$inputpaths"
-
 	/usr/local/fsl/bin/feat $OTEMPLATE
 	# feat $OTEMPLATE
 

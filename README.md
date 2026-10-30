@@ -222,28 +222,30 @@ It writes the following aligned outputs to `code`:
 - `L3-act-covariates.xlsx`: subject-aligned centered covariates; and
 - `L3-act-exclusions.tsv`: linked-cohort participants not selected at L3.
 
-`L3stats.sh` replaces `COPENUM` in the filepath list with the requested cope
-number, confirms that every resulting image is readable, and adds the ordered
-paths to the generated FSL design. The builder does not create separate
-per-contrast manifests; all exact retained rows are already present in
-`code/L3-act-selected-inputs.tsv`.
+The filepath list and covariate workbook are retained as checked pipeline
+outputs, but `L3stats.sh` does not read them. As in the original UGR workflow,
+the reviewed FSF template supplies the L3 design and input definitions. The
+builder does not create separate per-contrast manifests; all exact retained
+rows are already present in `code/L3-act-selected-inputs.tsv`.
 
 The covariate workbook includes centered ECog, national ADI rank, MSPSS,
 2013–2023 mean PM2.5, age, tSNR, and mean FD; centered gender indicators; and
 centered scanner-software indicators when more than one software version is
 present.
 
-## Part 3: UGR group-analysis status
+## Part 3: run the UGR group analyses
 
-The participant pipeline and `build_L3_inputs.sh` are operational. The final
-UGR FSL model is not yet self-contained because the current EV specification,
-contrast weights, and matching FSF template have not been finalized in this
-repository. The archived 258-participant template used obsolete `xa30`, `xa60`,
-and `fevs` variables and must not be reused with the new covariate workbook.
+The repository contains the reviewed 116-participant FSF templates under
+`templates/`. As in the original UGR workflow, select a model manually by
+editing the `covariate` and `N` lines near the top of `code/L3stats.sh` so they
+exactly match the selected template filename. The committed default is
+`covariate=adi` and `N=116`.
 
-`code/L3stats.sh` therefore fails clearly if the expected current template is
-absent. Do not run `code/run_L3stats.sh` until a reviewed template matching the
-new participant order and covariates has been added under `templates/`.
+`code/run_L3stats.sh` is configured to run the two prespecified active-task
+contrasts from the original UGR workflow:
+`11 offer-unfairness_pmod` and `12 social-nonsocial_pmod`. The script retains a
+commented loop containing the named contrasts 1–17 so the scope can be changed
+explicitly in the future.
 
 ## Validation and troubleshooting
 
