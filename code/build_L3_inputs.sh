@@ -64,7 +64,10 @@ selected_n="$(awk 'NR > 1 {print $1}' "${tmpdir}/selected-inputs.tsv" | sort -u 
 }
 
 # Keep one generic UGR cope path per subject in the same order as the subject
-# list. L3stats.sh replaces COPENUM with the requested contrast number.
+# list. L3stats.sh replaces COPENUM with the requested contrast number. For L2
+# fixed-effects outputs, the contrast number belongs to the copeN.feat
+# directory and the image inside that directory is always stats/cope1. For L1
+# outputs, the contrast number belongs to the stats/copeN image itself.
 awk -F '\t' '
 NR == 1 {
     for (column = 1; column <= NF; column++) header[$column] = column
@@ -72,7 +75,18 @@ NR == 1 {
 }
 $(header["contrast"]) == 1 {
     path = $(header["cope"])
-    sub(/cope[0-9]+\.nii\.gz$/, "copeCOPENUM.nii.gz", path)
+    level = $(header["level"])
+    if (level == "L2") {
+        replaced = sub(/\/cope1\.feat\/stats\/cope1\.nii\.gz$/, "/copeCOPENUM.feat/stats/cope1.nii.gz", path)
+    } else if (level == "L1") {
+        replaced = sub(/\/stats\/cope1\.nii\.gz$/, "/stats/copeCOPENUM.nii.gz", path)
+    } else {
+        replaced = 0
+    }
+    if (!replaced) {
+        print "ERROR: could not generalize " level " cope path: " path > "/dev/stderr"
+        exit 1
+    }
     print path
 }' "${tmpdir}/selected-inputs.tsv" > "${tmpdir}/input-paths.txt"
 

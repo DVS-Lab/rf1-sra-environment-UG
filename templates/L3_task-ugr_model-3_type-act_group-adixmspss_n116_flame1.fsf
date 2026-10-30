@@ -276,124 +276,124 @@ set fmri(fnirt_config) "T1_2_MNI152_2mm"
 set fmri(ncopeinputs) 0
 
 # 4D AVW data or FEAT directory (1)
-set feat_files(1) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-10541/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(1) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-10541/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (2)
-set feat_files(2) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-10809/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(2) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-10809/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (3)
-set feat_files(3) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-10858/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(3) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-10858/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (4)
-set feat_files(4) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-10862/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(4) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-10862/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (5)
-set feat_files(5) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-10866/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(5) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-10866/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (6)
 set feat_files(6) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-10881/ses-01/L1_task-ugr_ses-01_model-3_type-act_run-1_sm-5.feat/stats/copeCOPENUM.nii.gz"
 
 # 4D AVW data or FEAT directory (7)
-set feat_files(7) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-10886/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(7) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-10886/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (8)
-set feat_files(8) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-10898/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(8) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-10898/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (9)
-set feat_files(9) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-10938/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(9) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-10938/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (10)
-set feat_files(10) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-10953/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(10) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-10953/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (11)
-set feat_files(11) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-10964/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(11) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-10964/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (12)
-set feat_files(12) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-10974/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(12) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-10974/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (13)
-set feat_files(13) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11012/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(13) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11012/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (14)
-set feat_files(14) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11071/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(14) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11071/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (15)
-set feat_files(15) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11075/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(15) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11075/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (16)
-set feat_files(16) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11076/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(16) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11076/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (17)
-set feat_files(17) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11078/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(17) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11078/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (18)
-set feat_files(18) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11083/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(18) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11083/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (19)
-set feat_files(19) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11084/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(19) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11084/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (20)
-set feat_files(20) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11090/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(20) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11090/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (21)
-set feat_files(21) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11110/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(21) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11110/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (22)
-set feat_files(22) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11116/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(22) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11116/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (23)
-set feat_files(23) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11120/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(23) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11120/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (24)
-set feat_files(24) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11126/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(24) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11126/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (25)
-set feat_files(25) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11128/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(25) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11128/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (26)
-set feat_files(26) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11134/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(26) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11134/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (27)
-set feat_files(27) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11145/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(27) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11145/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (28)
-set feat_files(28) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11177/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(28) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11177/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (29)
-set feat_files(29) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11192/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(29) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11192/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (30)
-set feat_files(30) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11193/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(30) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11193/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (31)
 set feat_files(31) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11201/ses-01/L1_task-ugr_ses-01_model-3_type-act_run-2_sm-5.feat/stats/copeCOPENUM.nii.gz"
 
 # 4D AVW data or FEAT directory (32)
-set feat_files(32) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11209/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(32) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11209/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (33)
-set feat_files(33) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11367/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(33) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11367/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (34)
 set feat_files(34) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11374/ses-01/L1_task-ugr_ses-01_model-3_type-act_run-1_sm-5.feat/stats/copeCOPENUM.nii.gz"
 
 # 4D AVW data or FEAT directory (35)
-set feat_files(35) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11376/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(35) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11376/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (36)
-set feat_files(36) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11377/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(36) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11377/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (37)
 set feat_files(37) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11439/ses-01/L1_task-ugr_ses-01_model-3_type-act_run-1_sm-5.feat/stats/copeCOPENUM.nii.gz"
 
 # 4D AVW data or FEAT directory (38)
-set feat_files(38) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11440/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(38) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11440/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (39)
 set feat_files(39) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11443/ses-01/L1_task-ugr_ses-01_model-3_type-act_run-1_sm-5.feat/stats/copeCOPENUM.nii.gz"
 
 # 4D AVW data or FEAT directory (40)
-set feat_files(40) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11461/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(40) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11461/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (41)
 set feat_files(41) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11462/ses-01/L1_task-ugr_ses-01_model-3_type-act_run-1_sm-5.feat/stats/copeCOPENUM.nii.gz"
@@ -402,226 +402,226 @@ set feat_files(41) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-a
 set feat_files(42) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11472/ses-01/L1_task-ugr_ses-01_model-3_type-act_run-2_sm-5.feat/stats/copeCOPENUM.nii.gz"
 
 # 4D AVW data or FEAT directory (43)
-set feat_files(43) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11542/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(43) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11542/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (44)
-set feat_files(44) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11545/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(44) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11545/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (45)
-set feat_files(45) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11551/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(45) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11551/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (46)
-set feat_files(46) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11559/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(46) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11559/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (47)
-set feat_files(47) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11563/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(47) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11563/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (48)
-set feat_files(48) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11565/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(48) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11565/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (49)
-set feat_files(49) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11591/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(49) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11591/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (50)
-set feat_files(50) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11606/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(50) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11606/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (51)
-set feat_files(51) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11614/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(51) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11614/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (52)
-set feat_files(52) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11622/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(52) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11622/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (53)
-set feat_files(53) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11623/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(53) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11623/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (54)
-set feat_files(54) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11625/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(54) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11625/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (55)
-set feat_files(55) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11626/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(55) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11626/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (56)
-set feat_files(56) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11628/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(56) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11628/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (57)
-set feat_files(57) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11631/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(57) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11631/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (58)
-set feat_files(58) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11651/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(58) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11651/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (59)
-set feat_files(59) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11674/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(59) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11674/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (60)
 set feat_files(60) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11679/ses-01/L1_task-ugr_ses-01_model-3_type-act_run-1_sm-5.feat/stats/copeCOPENUM.nii.gz"
 
 # 4D AVW data or FEAT directory (61)
-set feat_files(61) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11681/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(61) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11681/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (62)
 set feat_files(62) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11701/ses-01/L1_task-ugr_ses-01_model-3_type-act_run-2_sm-5.feat/stats/copeCOPENUM.nii.gz"
 
 # 4D AVW data or FEAT directory (63)
-set feat_files(63) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11710/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(63) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11710/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (64)
-set feat_files(64) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11714/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(64) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11714/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (65)
-set feat_files(65) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11722/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(65) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11722/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (66)
-set feat_files(66) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11723/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(66) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11723/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (67)
-set feat_files(67) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11736/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(67) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11736/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (68)
-set feat_files(68) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11744/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(68) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11744/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (69)
-set feat_files(69) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11746/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(69) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11746/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (70)
-set feat_files(70) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11764/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(70) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11764/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (71)
-set feat_files(71) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11773/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(71) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11773/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (72)
 set feat_files(72) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11815/ses-01/L1_task-ugr_ses-01_model-3_type-act_run-1_sm-5.feat/stats/copeCOPENUM.nii.gz"
 
 # 4D AVW data or FEAT directory (73)
-set feat_files(73) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11822/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(73) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11822/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (74)
-set feat_files(74) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11823/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(74) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11823/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (75)
-set feat_files(75) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11824/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(75) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11824/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (76)
-set feat_files(76) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11828/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(76) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11828/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (77)
-set feat_files(77) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11829/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(77) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11829/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (78)
-set feat_files(78) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11840/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(78) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11840/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (79)
-set feat_files(79) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11847/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(79) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11847/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (80)
-set feat_files(80) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11853/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(80) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11853/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (81)
-set feat_files(81) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11854/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(81) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11854/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (82)
-set feat_files(82) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11881/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(82) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11881/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (83)
-set feat_files(83) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11885/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(83) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11885/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (84)
-set feat_files(84) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11891/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(84) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11891/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (85)
-set feat_files(85) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11897/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(85) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11897/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (86)
-set feat_files(86) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11900/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(86) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11900/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (87)
-set feat_files(87) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11902/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(87) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11902/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (88)
-set feat_files(88) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11909/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(88) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11909/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (89)
-set feat_files(89) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11913/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(89) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11913/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (90)
-set feat_files(90) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11914/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(90) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11914/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (91)
-set feat_files(91) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11922/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(91) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11922/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (92)
-set feat_files(92) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11923/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(92) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11923/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (93)
-set feat_files(93) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11924/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(93) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11924/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (94)
-set feat_files(94) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11926/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(94) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11926/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (95)
-set feat_files(95) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11928/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(95) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11928/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (96)
-set feat_files(96) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11929/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(96) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11929/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (97)
-set feat_files(97) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11931/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(97) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11931/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (98)
-set feat_files(98) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11935/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(98) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11935/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (99)
-set feat_files(99) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11939/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(99) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11939/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (100)
-set feat_files(100) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11943/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(100) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11943/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (101)
-set feat_files(101) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11949/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(101) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11949/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (102)
-set feat_files(102) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11969/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(102) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11969/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (103)
-set feat_files(103) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11974/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(103) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11974/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (104)
-set feat_files(104) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11976/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(104) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11976/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (105)
-set feat_files(105) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11982/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(105) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11982/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (106)
-set feat_files(106) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11984/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(106) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-11984/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (107)
-set feat_files(107) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-12008/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(107) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-12008/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (108)
-set feat_files(108) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-12011/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(108) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-12011/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (109)
-set feat_files(109) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-12013/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(109) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-12013/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (110)
-set feat_files(110) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-12018/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(110) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-12018/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (111)
-set feat_files(111) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-12020/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(111) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-12020/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (112)
-set feat_files(112) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-12021/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(112) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-12021/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (113)
-set feat_files(113) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-12031/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(113) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-12031/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (114)
-set feat_files(114) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-12032/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(114) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-12032/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (115)
-set feat_files(115) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-12033/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(115) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-12033/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (116)
-set feat_files(116) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-12036/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/cope1.feat/stats/copeCOPENUM.nii.gz"
+set feat_files(116) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55/sub-12036/ses-01/L2_task-ugr_ses-01_model-3_type-act_sm-5.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # Add confound EVs text file
 set fmri(confoundevs) 0
