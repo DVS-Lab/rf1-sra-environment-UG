@@ -254,3 +254,9 @@ sub-*.html
 
 # other files
 *.out
+
+# R session state
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
