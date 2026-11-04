@@ -260,3 +260,6 @@ sub-*.html
 .RData
 .Ruserdata
 .Rproj.user/
+
+# Local behavioral analysis outputs
+/code/behavioral_results/

@@ -11,7 +11,7 @@ if (length(missing_packages) > 0L) {
 
 project <- "UG"
 project_label <- "UGR"
-analysis_date <- "2026-10-26"
+analysis_date <- "2026-11-04"
 private_root <- "D:/Postdoc/Paper_brainhealth_environment/private data"
 private_dir <- file.path(private_root, "intermediate", paste0(project, "_", analysis_date))
 input_path <- file.path(private_dir, paste0(project, "_cohort_private_", analysis_date, ".xlsx"))

@@ -409,7 +409,7 @@ def write_workbook(args: argparse.Namespace) -> None:
     metadata.append(["imaging_selection", SELECTION_POLICY, "Validated exact input rows intersected with the linked paper cohort"])
     metadata.append([
         "mspss", "mspss_sum_mc",
-        "MSPSS total score, grand-mean centered within the final imaging sample",
+        "Corrected MSPSS score, grand-mean centered within the final imaging sample",
     ])
     metadata.append(["pm25", "pm25_mean_2013_2023_mc", "2013-2023 annual PM2.5 mean, grand-mean centered within the final imaging sample"])
     metadata.append(["gender", "male and female", "Grand-mean-centered indicators; non-binary is 0 in both before centering"])

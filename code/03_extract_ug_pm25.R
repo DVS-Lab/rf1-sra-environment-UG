@@ -21,7 +21,7 @@ repo_root <- normalizePath(file.path(script_dir, ".."), winslash = "/")
 
 project <- "UG"
 project_label <- "UGR"
-analysis_date <- "2026-10-26"
+analysis_date <- "2026-11-04"
 years <- 2013:2023
 private_root <- "D:/Postdoc/Paper_brainhealth_environment/private data"
 private_dir <- file.path(private_root, "intermediate", paste0(project, "_", analysis_date))

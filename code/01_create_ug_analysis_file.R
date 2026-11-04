@@ -1,4 +1,6 @@
-# Build the fixed 2026-10-26 UGR analysis cohort.
+# Build the fixed UGR analysis cohort using the corrected 2026-11-04
+# Island Screener export. The validated imaging roster remains fixed to
+# 2026-10-26.
 # All participant-level outputs from this stage are private because address and
 # ZIP are still required for environmental linkage.
 
@@ -20,13 +22,13 @@ script_dir <- if (length(script_arg) == 1L) {
 
 project <- "UG"
 project_label <- "UGR"
-analysis_date <- "2026-10-26"
+analysis_date <- "2026-11-04"
 expected_roster_n <- 145L
 private_root <- "D:/Postdoc/Paper_brainhealth_environment/private data"
 private_dir <- file.path(private_root, "intermediate", paste0(project, "_", analysis_date))
 screener_path <- file.path(
   private_root, "raw",
-  "IslandScreener-JacobSophieKatieData_DATA_2026-10-26_1247.csv"
+  "IslandScreener-JacobSophieKatieData_DATA_2026-11-04_1530.csv"
 )
 roster_path <- file.path(private_root, "inputs", "subjects_ugr_2026-10-26.txt")
 output_path <- file.path(private_dir, paste0(project, "_cohort_private_", analysis_date, ".xlsx"))

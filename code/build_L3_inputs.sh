@@ -9,7 +9,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 source "${SCRIPT_DIR}/project_config.sh"
 
 session="01"
-analysis_file="${ANALYSIS_FILE:-${PROJECT_ROOT}/data/derived/UG_analysis_data_2026-10-26.xlsx}"
+analysis_file="${ANALYSIS_FILE:-${PROJECT_ROOT}/data/derived/UG_analysis_data_2026-11-04.xlsx}"
 helper="${SCRIPT_DIR}/build_L3_covariates.py"
 
 l3_dir="${PROJECT_ROOT}/data/derived/l3"

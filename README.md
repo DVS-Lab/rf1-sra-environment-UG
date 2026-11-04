@@ -35,7 +35,7 @@ separate Windows-only private tree:
 `D:/Postdoc/Paper_brainhealth_environment/private data`
 
 The only participant-level analysis workbook published here is
-`data/derived/UG_analysis_data_2026-10-26.xlsx`. It contains one `Data` sheet
+`data/derived/UG_analysis_data_2026-11-04.xlsx`. It contains one `Data` sheet
 and exactly these approved fields:
 
 | Field | Description |
@@ -44,7 +44,7 @@ and exactly these approved fields:
 | `sub_age` | Completed age at the screener date |
 | `gender` | Source gender code or label used by the L3 builder |
 | `ecog_score` | ECog total score |
-| `mspss_sum` | MSPSS total score |
+| `mspss_sum` | Corrected MSPSS score from the Island Screener export |
 | `adi_natrank` | 2024 Neighborhood Atlas national ADI rank |
 | `pm25_mean_2013_2023` | Mean of the 11 annual PM2.5 values, in µg/m³ |
 
@@ -65,8 +65,8 @@ code/
   L3stats.sh                     UGR FSL runner; requires current template
   run_L3stats.sh                 multi-contrast runner; see status below
 data/derived/
-  UG_analysis_data_2026-10-26.xlsx
-  UG_pipeline_summary_2026-10-26.csv
+  UG_analysis_data_2026-11-04.xlsx
+  UG_pipeline_summary_2026-11-04.csv
   l3/                             generated on Linux
 ```
 
@@ -74,7 +74,7 @@ data/derived/
 
 This release is intentionally fixed to:
 
-- screener export `IslandScreener-JacobSophieKatieData_DATA_2026-10-26_1247.csv`;
+- corrected screener export `IslandScreener-JacobSophieKatieData_DATA_2026-11-04_1530.csv`;
 - the validated 145-participant UGR imaging roster from October 26, 2026;
 - 2024 Neighborhood Atlas ADI version 4.0.1; and
 - annual ACAG V5.NA.05 Hybrid PM2.5 rasters for 2013–2023.
@@ -110,7 +110,7 @@ install.packages(c("readxl", "writexl", "sf"))
 ```text
 private data/
   raw/
-    IslandScreener-JacobSophieKatieData_DATA_2026-10-26_1247.csv
+    IslandScreener-JacobSophieKatieData_DATA_2026-11-04_1530.csv
   inputs/
     subjects_ugr_2026-10-26.txt
     geocodio_download_118_cohort_2026-10-26.csv
@@ -126,7 +126,7 @@ private data/
     pm-download/Annual/Annual/
       V5NA05.HybridPM25.xNorthAmerica.<year>001-<year><last-day>.asc.zip
   intermediate/
-    UG_2026-10-26/               created by the pipeline
+    UG_2026-11-04/               created by the pipeline
 ```
 
 The private files are not distributed with this repository. An authorized user
@@ -145,7 +145,7 @@ From the repository root in PowerShell:
 ```
 
 Stage 1 writes the address-bearing cohort and exclusion audit only under
-`private data/intermediate/UG_2026-10-26`. Stage 2 adds private ADI linkage and
+`private data/intermediate/UG_2026-11-04`. Stage 2 adds private ADI linkage and
 the coordinates used for exposure extraction. Stage 3 writes the detailed
 coordinate and annual-exposure audit privately, then writes only the approved
 seven-column workbook and aggregate summary under `data/derived`.
@@ -199,7 +199,7 @@ export BIDS_ROOT=/path/to/bids
 export SELECTED_INPUTS=/path/to/ugr/selected_inputs.tsv
 export RUN_DECISIONS=/path/to/run_decisions.tsv
 # Optional replacement for the committed cleaned workbook:
-export ANALYSIS_FILE=/path/to/UG_analysis_data_2026-10-26.xlsx
+export ANALYSIS_FILE=/path/to/UG_analysis_data_2026-11-04.xlsx
 ```
 
 ### Run the builder
