@@ -22,7 +22,7 @@ REPLACEME=$3 # act  ppi, nppi # this defines the parts of the path that differ a
 type=${REPLACEME} # For output template
 
 # Variables that change per analysis. Check carefully!
-covariate=pm25xmspss
+covariate=adixmspss
 N=116 # update manually to match the selected template
 
 if [[ $analysis == "act" ]]; then
