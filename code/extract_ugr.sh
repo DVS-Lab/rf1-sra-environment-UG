@@ -29,7 +29,7 @@ for sub in `cat ${basedir}/code/L3-act-subjects.txt`; do
   # Check if the data file exists
   if [ -f "$DATA" ]; then   
      echo "Extracting L2 signal for subject: ${sub}" >> $log
-    OUTPUT="${outputdir}/sub-${sub}_L2_datapush_ecogxadi_meants.txt" 
+    OUTPUT="${outputdir}/sub-${sub}_L2_pm25xmspss_meants.txt" 
     fslmeants -i $DATA -o $OUTPUT -m $mask
    	
     chmod 777 $OUTPUT
@@ -39,7 +39,7 @@ for sub in `cat ${basedir}/code/L3-act-subjects.txt`; do
   	
    if [ -f "$DATArun1" ]; then
    	 echo "Extracting run1 signal for subject: ${sub}" >> $log
-   	 OUTPUT="${outputdir}/sub-${sub}_run-1_datapush_ecogxadi_meants.txt"
+   	 OUTPUT="${outputdir}/sub-${sub}_run-1_pm25xmspss_meants.txt"
    	 fslmeants -i $DATArun1 -o $OUTPUT -m $mask
 
 
@@ -49,7 +49,7 @@ for sub in `cat ${basedir}/code/L3-act-subjects.txt`; do
    fi
  	if [ -f "$DATArun2" ]; then
    	 echo "Extracting run2 signal for subject: ${sub}" >> $log
-   	 OUTPUT="${outputdir}/sub-${sub}_run-2_datapush_ecogxadi_meants.txt"
+   	 OUTPUT="${outputdir}/sub-${sub}_run-2_pm25xmspss_meants.txt"
    	 fslmeants -i $DATArun2 -o $OUTPUT -m $mask
  
 
