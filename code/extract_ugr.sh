@@ -8,6 +8,7 @@ task="ugr"
 model="3"
 sm="5"
 mask=${basedir}/masks/pm25xmspss_cope12_mask.nii.gz
+upstreamdir=/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55
 
 # Output directory for the meants text files
 outputdir=${basedir}/derivatives/extractions/pm25xmspss_cope12_ugr_meants
@@ -18,11 +19,11 @@ mkdir -p $outputdir
 for sub in `cat ${basedir}/code/L3-act-subjects.txt`; do
 
   # Define the path to the filtered functional data
-  DATA=${basedir}/derivatives/fsl/sub-${sub}/ses-01/L2_task-${task}_model-${model}_type-act_sm-${sm}.gfeat/cope11.feat/stats/zstat1.nii.gz
+  DATA=${upstreamdir}/sub-${sub}/ses-01/L2_task-${task}_ses-01_model-${model}_type-act_sm-${sm}.gfeat/cope12.feat/stats/zstat1.nii.gz
 
-  DATArun1=${basedir}/derivatives/fsl/sub-${sub}/ses-01/L1_task-${task}_model-${model}_type-act_run-1_sm-${sm}.feat/stats/zstat11.nii.gz
+  DATArun1=${upstreamdir}/sub-${sub}/ses-01/L1_task-${task}_ses-01_model-${model}_type-act_run-1_sm-${sm}.feat/stats/zstat12.nii.gz
   
-  DATArun2=${basedir}/derivatives/fsl/sub-${sub}/ses-01/L1_task-${task}_model-${model}_type-act_run-2_sm-${sm}.feat/stats/zstat11.nii.gz
+  DATArun2=${upstreamdir}/sub-${sub}/ses-01/L1_task-${task}_ses-01_model-${model}_type-act_run-2_sm-${sm}.feat/stats/zstat12.nii.gz
  
 
   # Check if the data file exists

@@ -6,9 +6,11 @@
 # The script reads participant-level covariates from the derived analysis
 # workbook and behavioral outcomes from build_behavioral_data.R. It writes
 # aggregate statistical results and manuscript-ready figures to the external
-# results-UG directory beside the repository. Keeping these generated results
-# outside the repository prevents them from being committed to GitHub. It does
-# not write participant-level covariate data.
+# results-UG directory beside the repository. It also writes a complete
+# parallel set of age- and gender-adjusted results to
+# results-UG/age_gender_adjusted. Keeping these generated results outside the
+# repository prevents them from being committed to GitHub. The script does not
+# write participant-level covariate data.
 
 
 # -----------------------------------------------------------------------------
@@ -45,6 +47,10 @@ covariate_file <- file.path(
   "..", "data", "derived", "UG_analysis_data_2026-11-04.xlsx"
 )
 results_directory <- file.path("..", "..", "results-UG")
+adjusted_results_directory <- file.path(
+  results_directory,
+  "age_gender_adjusted"
+)
 
 input_files <- c(
   behavior_file,
@@ -65,6 +71,11 @@ if (length(missing_input_files) > 0) {
 }
 
 dir.create(results_directory, showWarnings = FALSE, recursive = TRUE)
+dir.create(
+  adjusted_results_directory,
+  showWarnings = FALSE,
+  recursive = TRUE
+)
 
 
 # -----------------------------------------------------------------------------
@@ -96,7 +107,7 @@ retained_subjects <- retained_subjects[nzchar(retained_subjects)]
 covariates <- readxl::read_excel(
   covariate_file,
   sheet = "Data",
-  # gender is retained as text, although it is not used in these analyses.
+  # Read gender as text so its source coding can be validated explicitly.
   col_types = c("text", "numeric", "text", rep("numeric", 4))
 ) |>
   dplyr::rename(sub_id = rf1_id)
@@ -108,7 +119,7 @@ required_slope_columns <- c(
   "sub_id", "slope_all", "slope_social", "slope_nonsocial", "diff_slope"
 )
 required_covariate_columns <- c(
-  "sub_id", "sub_age", "ecog_score", "mspss_sum", "adi_natrank",
+  "sub_id", "sub_age", "gender", "ecog_score", "mspss_sum", "adi_natrank",
   "pm25_mean_2013_2023"
 )
 
@@ -216,13 +227,31 @@ participant_data <- participant_acceptance |>
   dplyr::left_join(slopes, by = "sub_id", relationship = "one-to-one") |>
   dplyr::left_join(covariates, by = "sub_id", relationship = "one-to-one") |>
   dplyr::mutate(
+    # The project covariate builder documents 0 as male and 1 as female. This
+    # retained sample contains only those two codes. Centering the indicator
+    # makes model intercepts refer to the sample-average gender composition.
+    gender_code = trimws(as.character(gender)),
+    gender_female = dplyr::case_when(
+      gender_code == "0" ~ 0,
+      gender_code == "1" ~ 1,
+      TRUE ~ NA_real_
+    ),
     # Standardized predictors make effects comparable and reduce scaling issues.
     age_z = as.numeric(scale(sub_age)),
     ecog_z = as.numeric(scale(ecog_score)),
     adi_z = as.numeric(scale(adi_natrank)),
     pm25_z = as.numeric(scale(pm25_mean_2013_2023)),
-    mspss_z = as.numeric(scale(mspss_sum))
+    mspss_z = as.numeric(scale(mspss_sum)),
+    gender_female_c = gender_female - mean(gender_female)
   )
+
+if (anyNA(participant_data$gender_female)) {
+  stop(
+    "Gender must use the documented binary source codes 0 (male) and 1 ",
+    "(female) for the age- and gender-adjusted analyses.",
+    call. = FALSE
+  )
+}
 
 standardized_predictors <- c("age_z", "ecog_z", "adi_z", "pm25_z", "mspss_z")
 
@@ -246,7 +275,11 @@ trial_data <- behavior |>
   ) |>
   dplyr::left_join(
     participant_data |>
-      dplyr::select(sub_id, dplyr::all_of(standardized_predictors)),
+      dplyr::select(
+        sub_id,
+        dplyr::all_of(standardized_predictors),
+        gender_female_c
+      ),
     by = "sub_id",
     relationship = "many-to-one"
   )
@@ -422,7 +455,203 @@ readr::write_csv(
 
 
 # -----------------------------------------------------------------------------
-# 5. Acceptance-by-fairness figure
+# 5. Age- and gender-adjusted core analyses
+# -----------------------------------------------------------------------------
+
+# The adjusted repeated-measures ANOVA uses age and gender as centered numeric
+# covariates. afex includes each covariate's interactions with the within-
+# participant factors; the exported table retains the same three focal omnibus
+# effects as the unadjusted analysis.
+acceptance_cells_adjusted <- acceptance_cells |>
+  dplyr::left_join(
+    participant_data |>
+      dplyr::select(sub_id, age_z, gender_female_c),
+    by = "sub_id",
+    relationship = "many-to-one"
+  )
+
+acceptance_anova_adjusted <- afex::aov_ez(
+  id = "sub_id",
+  dv = "acceptance_rate",
+  data = acceptance_cells_adjusted,
+  within = c("fairness_level", "partner_type"),
+  covariate = c("age_z", "gender_female_c"),
+  factorize = FALSE,
+  anova_table = list(correction = "GG", es = "pes")
+)
+
+acceptance_anova_adjusted_results <- as.data.frame(
+  acceptance_anova_adjusted$anova_table
+) |>
+  tibble::rownames_to_column("effect") |>
+  dplyr::filter(
+    effect %in% c(
+      "fairness_level",
+      "partner_type",
+      "fairness_level:partner_type"
+    )
+  )
+
+adjusted_anova_p_column <- grep(
+  "^Pr\\(>F",
+  names(acceptance_anova_adjusted_results),
+  value = TRUE
+)
+
+if (length(adjusted_anova_p_column) != 1) {
+  stop(
+    "The adjusted repeated-measures ANOVA p-value column could not be ",
+    "identified."
+  )
+}
+
+names(acceptance_anova_adjusted_results)[
+  names(acceptance_anova_adjusted_results) == adjusted_anova_p_column
+] <- "p_value"
+
+acceptance_anova_adjusted_results <- acceptance_anova_adjusted_results |>
+  dplyr::mutate(
+    controls = paste(
+      "Standardized age and centered female indicator, including",
+      "covariate-by-within-factor interactions"
+    ),
+    p_fdr_bh = stats::p.adjust(p_value, method = "BH"),
+    p_adjustment_family =
+      "Three age- and gender-adjusted omnibus repeated-measures ANOVA effects"
+  )
+
+readr::write_csv(
+  acceptance_anova_adjusted_results,
+  file.path(adjusted_results_directory, "acceptance_rm_anova.csv")
+)
+
+# The adjusted core GLMM adds age and gender as participant-level fixed effects.
+# The experimental fairness and partner terms retain the same interpretation as
+# in the unadjusted model.
+core_acceptance_glmm_adjusted <- lme4::glmer(
+  accept ~ fairness_10_c * partner_social + age_z + gender_female_c +
+    (1 + fairness_10_c + partner_social || sub_id),
+  data = trial_data,
+  family = stats::binomial,
+  control = lme4::glmerControl(
+    optimizer = "bobyqa",
+    optCtrl = list(maxfun = 200000)
+  )
+)
+
+core_adjusted_coefficient_table <- as.data.frame(
+  summary(core_acceptance_glmm_adjusted)$coefficients
+) |>
+  tibble::rownames_to_column("term") |>
+  dplyr::filter(
+    term %in% c(
+      "fairness_10_c",
+      "partner_social",
+      "fairness_10_c:partner_social"
+    )
+  ) |>
+  dplyr::transmute(
+    term,
+    test = dplyr::case_when(
+      term == "fairness_10_c" ~
+        "Acceptance increases with offer fairness",
+      term == "partner_social" ~
+        "Main effect of partner type at mean fairness",
+      term == "fairness_10_c:partner_social" ~
+        "Difference in fairness sensitivity by partner type",
+      TRUE ~ term
+    ),
+    controls = "Standardized age and centered female indicator",
+    log_odds_estimate = Estimate,
+    std_error = `Std. Error`,
+    z_value = `z value`,
+    p_value = `Pr(>|z|)`,
+    log_odds_ci_low = log_odds_estimate - stats::qnorm(0.975) * std_error,
+    log_odds_ci_high = log_odds_estimate + stats::qnorm(0.975) * std_error,
+    odds_ratio = exp(log_odds_estimate),
+    odds_ratio_ci_low = exp(log_odds_ci_low),
+    odds_ratio_ci_high = exp(log_odds_ci_high),
+    p_fdr_bh = stats::p.adjust(p_value, method = "BH"),
+    p_adjustment_family =
+      "Three fixed effects in the age- and gender-adjusted core acceptance GLMM",
+    n_trials = stats::nobs(core_acceptance_glmm_adjusted),
+    n_participants = dplyr::n_distinct(trial_data$sub_id),
+    singular_fit = lme4::isSingular(
+      core_acceptance_glmm_adjusted,
+      tol = 1e-4
+    ),
+    model = paste(
+      deparse(stats::formula(core_acceptance_glmm_adjusted)),
+      collapse = " "
+    )
+  )
+
+readr::write_csv(
+  core_adjusted_coefficient_table,
+  file.path(adjusted_results_directory, "acceptance_core_glmm.csv")
+)
+
+# A regression of the within-participant slope difference on centered age and
+# gender tests whether the adjusted mean social-minus-nonsocial difference is
+# different from zero. Separate regressions provide adjusted social and
+# nonsocial slope means at the same covariate values.
+adjusted_social_slope_model <- stats::lm(
+  slope_social ~ age_z + gender_female_c,
+  data = participant_data
+)
+adjusted_nonsocial_slope_model <- stats::lm(
+  slope_nonsocial ~ age_z + gender_female_c,
+  data = participant_data
+)
+adjusted_slope_difference_model <- stats::lm(
+  diff_slope ~ age_z + gender_female_c,
+  data = participant_data
+)
+
+adjusted_slope_difference_table <- summary(
+  adjusted_slope_difference_model
+)$coefficients
+adjusted_slope_difference_ci <- stats::confint(
+  adjusted_slope_difference_model,
+  parm = "(Intercept)",
+  level = 0.95
+)
+
+slope_partner_adjusted_results <- tibble::tibble(
+  test = paste(
+    "Adjusted social-minus-nonsocial fairness slope difference",
+    "at mean age and sample-average gender composition"
+  ),
+  controls = "Standardized age and centered female indicator",
+  mean_social_slope = stats::coef(adjusted_social_slope_model)["(Intercept)"],
+  mean_nonsocial_slope =
+    stats::coef(adjusted_nonsocial_slope_model)["(Intercept)"],
+  mean_difference_social_minus_nonsocial =
+    adjusted_slope_difference_table["(Intercept)", "Estimate"],
+  difference_ci_low = adjusted_slope_difference_ci[1],
+  difference_ci_high = adjusted_slope_difference_ci[2],
+  t_value = adjusted_slope_difference_table["(Intercept)", "t value"],
+  degrees_of_freedom = stats::df.residual(adjusted_slope_difference_model),
+  p_value = adjusted_slope_difference_table["(Intercept)", "Pr(>|t|)"],
+  p_fdr_bh = stats::p.adjust(p_value, method = "BH"),
+  n_participants = stats::nobs(adjusted_slope_difference_model),
+  model = paste(
+    deparse(stats::formula(adjusted_slope_difference_model)),
+    collapse = " "
+  )
+)
+
+readr::write_csv(
+  slope_partner_adjusted_results,
+  file.path(
+    adjusted_results_directory,
+    "fairness_slope_partner_comparison.csv"
+  )
+)
+
+
+# -----------------------------------------------------------------------------
+# 6. Acceptance-by-fairness figures
 # -----------------------------------------------------------------------------
 
 acceptance_plot <- ggplot2::ggplot(
@@ -496,9 +725,161 @@ ggplot2::ggsave(
   units = "in"
 )
 
+# Predicted probabilities from the adjusted core GLMM provide the parallel
+# acceptance-by-fairness display. Predictions hold age at its sample mean and
+# gender at the sample-average composition because both controls are centered.
+adjusted_acceptance_plot_data <- expand.grid(
+  fairness_percent = c(5, 10, 25, 50),
+  partner_social = c(1, 0)
+) |>
+  tibble::as_tibble() |>
+  dplyr::mutate(
+    fairness_10_c = fairness_percent / 10 - mean_fairness_10,
+    age_z = 0,
+    gender_female_c = 0
+  )
+
+adjusted_fixed_terms <- stats::terms(
+  ~ fairness_10_c * partner_social + age_z + gender_female_c
+)
+adjusted_design_matrix <- stats::model.matrix(
+  adjusted_fixed_terms,
+  data = adjusted_acceptance_plot_data
+)
+adjusted_fixed_effects <- lme4::fixef(core_acceptance_glmm_adjusted)
+adjusted_fixed_covariance <- as.matrix(
+  stats::vcov(core_acceptance_glmm_adjusted)
+)
+
+adjusted_linear_predictor <- as.numeric(
+  adjusted_design_matrix %*% adjusted_fixed_effects
+)
+adjusted_linear_predictor_se <- sqrt(
+  diag(
+    adjusted_design_matrix %*%
+      adjusted_fixed_covariance %*%
+      t(adjusted_design_matrix)
+  )
+)
+
+adjusted_acceptance_plot_data <- adjusted_acceptance_plot_data |>
+  dplyr::mutate(
+    fairness_level = factor(
+      fairness_percent,
+      levels = c(5, 10, 25, 50),
+      labels = c("5%", "10%", "25%", "50%")
+    ),
+    partner_type = factor(
+      partner_social,
+      levels = c(1, 0),
+      labels = c("Social", "Nonsocial")
+    ),
+    mean_acceptance_rate = 100 * stats::plogis(adjusted_linear_predictor),
+    ci_low = 100 * stats::plogis(
+      adjusted_linear_predictor -
+        stats::qnorm(0.975) * adjusted_linear_predictor_se
+    ),
+    ci_high = 100 * stats::plogis(
+      adjusted_linear_predictor +
+        stats::qnorm(0.975) * adjusted_linear_predictor_se
+    ),
+    estimate_type = paste(
+      "Core GLMM prediction at mean age and sample-average gender composition"
+    )
+  ) |>
+  dplyr::select(
+    fairness_level,
+    partner_type,
+    mean_acceptance_rate,
+    ci_low,
+    ci_high,
+    estimate_type
+  )
+
+readr::write_csv(
+  adjusted_acceptance_plot_data,
+  file.path(
+    adjusted_results_directory,
+    "acceptance_by_fairness_partner.csv"
+  )
+)
+
+adjusted_acceptance_plot <- ggplot2::ggplot(
+  adjusted_acceptance_plot_data,
+  ggplot2::aes(
+    x = fairness_level,
+    y = mean_acceptance_rate,
+    fill = partner_type
+  )
+) +
+  ggplot2::geom_col(
+    position = ggplot2::position_dodge(width = 0.78),
+    width = 0.70,
+    color = "black",
+    linewidth = 0.25
+  ) +
+  ggplot2::geom_errorbar(
+    ggplot2::aes(ymin = ci_low, ymax = ci_high),
+    position = ggplot2::position_dodge(width = 0.78),
+    width = 0.18,
+    linewidth = 0.45
+  ) +
+  ggplot2::scale_fill_manual(
+    values = c("Social" = "#E65D2C", "Nonsocial" = "#0870B7"),
+    name = "Partner type"
+  ) +
+  ggplot2::scale_y_continuous(
+    limits = c(0, 100),
+    breaks = seq(0, 100, by = 20),
+    labels = scales::label_number(suffix = "%"),
+    expand = ggplot2::expansion(mult = c(0, 0.02))
+  ) +
+  ggplot2::labs(
+    x = "Offer fairness",
+    y = "Adjusted acceptance rate",
+    caption = paste(
+      "Predicted at mean age and sample-average gender composition;",
+      "error bars are 95% confidence intervals."
+    )
+  ) +
+  ggplot2::theme_classic(base_size = 12) +
+  ggplot2::theme(
+    legend.position = "top",
+    legend.title = ggplot2::element_text(face = "bold"),
+    axis.title = ggplot2::element_text(face = "bold"),
+    axis.text = ggplot2::element_text(color = "black"),
+    plot.caption = ggplot2::element_text(hjust = 0)
+  )
+
+ggplot2::ggsave(
+  filename = file.path(
+    adjusted_results_directory,
+    "acceptance_by_fairness_partner.tiff"
+  ),
+  plot = adjusted_acceptance_plot,
+  device = grDevices::tiff,
+  width = 6.5,
+  height = 5,
+  units = "in",
+  dpi = 600,
+  compression = "lzw"
+)
+
+ggplot2::ggsave(
+  filename = file.path(
+    adjusted_results_directory,
+    "acceptance_by_fairness_partner.svg"
+  ),
+  plot = adjusted_acceptance_plot,
+  device = grDevices::svg,
+  width = 6.5,
+  height = 5,
+  units = "in"
+)
+
 
 # -----------------------------------------------------------------------------
-# 6. Individual-difference model definitions
+# 7. Individual-difference model definitions
 # -----------------------------------------------------------------------------
 
 # Each interaction is tested in its own model. Interaction models include both
@@ -534,9 +915,30 @@ slope_outcomes <- tibble::tribble(
   "Social minus nonsocial", "diff_slope"
 )
 
+# This rule is used in all three adjusted individual-difference model families.
+# If age is already the focal predictor or part of the focal interaction, it is
+# not added a second time as a control. Gender is included in every model.
+age_gender_controls_for <- function(specification) {
+  focal_predictors <- stats::na.omit(
+    c(specification$predictor_1, specification$predictor_2)
+  )
+
+  if ("age_z" %in% focal_predictors) {
+    list(
+      terms = "gender_female_c",
+      description = "Centered female indicator; age is a focal model term"
+    )
+  } else {
+    list(
+      terms = c("age_z", "gender_female_c"),
+      description = "Standardized age and centered female indicator"
+    )
+  }
+}
+
 
 # -----------------------------------------------------------------------------
-# 7. Repeated helpers for extracting the requested model effects
+# 8. Repeated helpers for extracting the requested model effects
 # -----------------------------------------------------------------------------
 
 # This operation is repeated for every participant-level model, so a small
@@ -751,9 +1153,87 @@ readr::write_csv(
   file.path(results_directory, "individual_difference_acceptance_lm.csv")
 )
 
+# Parallel participant-level acceptance models with age and gender controls.
+acceptance_lm_adjusted_results <- list()
+result_number <- 1
+
+for (outcome_number in seq_len(nrow(acceptance_outcomes))) {
+  outcome_label <- acceptance_outcomes$outcome_label[outcome_number]
+  outcome_variable <- acceptance_outcomes$outcome_variable[outcome_number]
+
+  for (model_number in seq_len(nrow(model_specifications))) {
+    specification <- model_specifications[model_number, ]
+    controls <- age_gender_controls_for(specification)
+
+    if (specification$model_type == "main_effect") {
+      predictor_expression <- specification$predictor_1
+      target_term <- specification$predictor_1
+    } else {
+      predictor_expression <- paste0(
+        specification$predictor_1,
+        " * ",
+        specification$predictor_2
+      )
+      target_term <- paste0(
+        specification$predictor_1,
+        ":",
+        specification$predictor_2
+      )
+    }
+
+    model_formula <- stats::as.formula(
+      paste(
+        outcome_variable,
+        "~",
+        predictor_expression,
+        "+",
+        paste(controls$terms, collapse = " + ")
+      )
+    )
+    fitted_model <- stats::lm(model_formula, data = participant_data)
+
+    acceptance_lm_adjusted_results[[result_number]] <- extract_lm_effect(
+      fitted_model,
+      target_term
+    ) |>
+      dplyr::mutate(
+        analysis_level = paste(
+          "Age- and gender-adjusted participant-level linear model",
+          "of percent accepted"
+        ),
+        outcome = outcome_label,
+        model_id = specification$model_id,
+        model_type = specification$model_type,
+        controls = controls$description,
+        .before = 1
+      )
+
+    result_number <- result_number + 1
+  }
+}
+
+acceptance_lm_adjusted_results <- dplyr::bind_rows(
+  acceptance_lm_adjusted_results
+) |>
+  dplyr::mutate(
+    p_fdr_bh = stats::p.adjust(p_value, method = "BH"),
+    p_adjustment_family = paste(
+      "All 33 age- and gender-adjusted individual-difference",
+      "acceptance-rate LM target tests"
+    )
+  )
+
+readr::write_csv(
+  acceptance_lm_adjusted_results,
+  file.path(
+    adjusted_results_directory,
+    "individual_difference_acceptance_lm.csv"
+  )
+)
+
 
 # -----------------------------------------------------------------------------
-# 9. Trial-level binomial mixed models of acceptance
+# 10. Trial-level binomial mixed models of acceptance
 # -----------------------------------------------------------------------------
 
 acceptance_glmm_results <- list()
@@ -843,9 +1323,121 @@ readr::write_csv(
   file.path(results_directory, "individual_difference_acceptance_glmm.csv")
 )
 
+# Parallel trial-level acceptance GLMMs with age and gender controls. For the
+# social-minus-nonsocial tests, each control is interacted with partner type so
+# the focal predictor-by-partner effect is adjusted for covariate-related
+# differences between social and nonsocial acceptance.
+acceptance_glmm_adjusted_results <- list()
+result_number <- 1
+
+for (outcome_number in seq_len(nrow(acceptance_outcomes))) {
+  outcome_label <- acceptance_outcomes$outcome_label[outcome_number]
+
+  if (outcome_label == "Social trials") {
+    analysis_data <- trial_data |>
+      dplyr::filter(condition == "social")
+  } else {
+    analysis_data <- trial_data
+  }
+
+  for (model_number in seq_len(nrow(model_specifications))) {
+    specification <- model_specifications[model_number, ]
+    controls <- age_gender_controls_for(specification)
+
+    if (specification$model_type == "main_effect") {
+      individual_difference_expression <- specification$predictor_1
+      individual_difference_term <- specification$predictor_1
+    } else {
+      individual_difference_expression <- paste0(
+        specification$predictor_1,
+        " * ",
+        specification$predictor_2
+      )
+      individual_difference_term <- paste0(
+        specification$predictor_1,
+        ":",
+        specification$predictor_2
+      )
+    }
+
+    if (outcome_label == "Social minus nonsocial") {
+      control_expressions <- paste0(
+        controls$terms,
+        " * partner_social"
+      )
+      fixed_effects <- paste0(
+        "fairness_10_c * partner_social + ",
+        individual_difference_expression,
+        " * partner_social + ",
+        paste(control_expressions, collapse = " + ")
+      )
+      target_term <- paste0(
+        individual_difference_term,
+        ":partner_social"
+      )
+      random_effects <- "(1 + fairness_10_c + partner_social || sub_id)"
+    } else {
+      fixed_effects <- paste0(
+        "fairness_10_c + ",
+        individual_difference_expression,
+        " + ",
+        paste(controls$terms, collapse = " + ")
+      )
+      target_term <- individual_difference_term
+      random_effects <- "(1 + fairness_10_c || sub_id)"
+    }
+
+    model_formula <- stats::as.formula(
+      paste("accept ~", fixed_effects, "+", random_effects)
+    )
+
+    acceptance_glmm_adjusted_results[[result_number]] <-
+      fit_and_extract_glmm_effect(
+        analysis_data,
+        model_formula,
+        target_term
+      ) |>
+      dplyr::mutate(
+        analysis_level = paste(
+          "Age- and gender-adjusted trial-level binomial mixed model"
+        ),
+        outcome = outcome_label,
+        model_id = specification$model_id,
+        model_type = specification$model_type,
+        controls = if (outcome_label == "Social minus nonsocial") {
+          paste0(controls$description, "; controls interacted with partner type")
+        } else {
+          controls$description
+        },
+        .before = 1
+      )
+
+    result_number <- result_number + 1
+  }
+}
+
+acceptance_glmm_adjusted_results <- dplyr::bind_rows(
+  acceptance_glmm_adjusted_results
+) |>
+  dplyr::mutate(
+    p_fdr_bh = stats::p.adjust(p_value, method = "BH"),
+    p_adjustment_family = paste(
+      "All 33 age- and gender-adjusted individual-difference",
+      "acceptance GLMM target tests"
+    )
+  )
+
+readr::write_csv(
+  acceptance_glmm_adjusted_results,
+  file.path(
+    adjusted_results_directory,
+    "individual_difference_acceptance_glmm.csv"
+  )
+)
+
 
 # -----------------------------------------------------------------------------
-# 10. Participant-level linear models of fairness sensitivity slopes
+# 11. Participant-level linear models of fairness sensitivity slopes
 # -----------------------------------------------------------------------------
 
 slope_lm_results <- list()
@@ -911,9 +1503,87 @@ readr::write_csv(
   )
 )
 
+# Parallel fairness-sensitivity slope models with age and gender controls.
+slope_lm_adjusted_results <- list()
+result_number <- 1
+
+for (outcome_number in seq_len(nrow(slope_outcomes))) {
+  outcome_label <- slope_outcomes$outcome_label[outcome_number]
+  outcome_variable <- slope_outcomes$outcome_variable[outcome_number]
+
+  for (model_number in seq_len(nrow(model_specifications))) {
+    specification <- model_specifications[model_number, ]
+    controls <- age_gender_controls_for(specification)
+
+    if (specification$model_type == "main_effect") {
+      predictor_expression <- specification$predictor_1
+      target_term <- specification$predictor_1
+    } else {
+      predictor_expression <- paste0(
+        specification$predictor_1,
+        " * ",
+        specification$predictor_2
+      )
+      target_term <- paste0(
+        specification$predictor_1,
+        ":",
+        specification$predictor_2
+      )
+    }
+
+    model_formula <- stats::as.formula(
+      paste(
+        outcome_variable,
+        "~",
+        predictor_expression,
+        "+",
+        paste(controls$terms, collapse = " + ")
+      )
+    )
+    fitted_model <- stats::lm(model_formula, data = participant_data)
+
+    slope_lm_adjusted_results[[result_number]] <- extract_lm_effect(
+      fitted_model,
+      target_term
+    ) |>
+      dplyr::mutate(
+        analysis_level = paste(
+          "Age- and gender-adjusted participant-level linear model",
+          "of fairness slope"
+        ),
+        outcome = outcome_label,
+        model_id = specification$model_id,
+        model_type = specification$model_type,
+        controls = controls$description,
+        .before = 1
+      )
+
+    result_number <- result_number + 1
+  }
+}
+
+slope_lm_adjusted_results <- dplyr::bind_rows(
+  slope_lm_adjusted_results
+) |>
+  dplyr::mutate(
+    p_fdr_bh = stats::p.adjust(p_value, method = "BH"),
+    p_adjustment_family = paste(
+      "All 33 age- and gender-adjusted individual-difference",
+      "fairness-slope LM target tests"
+    )
+  )
+
+readr::write_csv(
+  slope_lm_adjusted_results,
+  file.path(
+    adjusted_results_directory,
+    "individual_difference_fairness_slopes_lm.csv"
+  )
+)
+
 
 # -----------------------------------------------------------------------------
-# 11. Pearson correlations among individual-difference measures
+# 12. Correlations among individual-difference measures
 # -----------------------------------------------------------------------------
 
 correlation_variables <- c(
@@ -968,20 +1638,116 @@ readr::write_csv(
   file.path(results_directory, "individual_difference_correlations.csv")
 )
 
+# Partial correlations provide the parallel adjusted association tests. When
+# age is one of the two focal variables, gender is the only control; otherwise,
+# both age and gender are removed from both focal variables before correlation.
+partial_correlation_results <- vector("list", length(correlation_pairs))
+
+for (pair_number in seq_along(correlation_pairs)) {
+  variable_labels <- correlation_pairs[[pair_number]]
+  variable_1 <- correlation_variables[[variable_labels[1]]]
+  variable_2 <- correlation_variables[[variable_labels[2]]]
+
+  if ("Age" %in% variable_labels) {
+    control_variables <- "gender_female_c"
+    control_description <-
+      "Centered female indicator; age is a focal correlation variable"
+  } else {
+    control_variables <- c("age_z", "gender_female_c")
+    control_description <-
+      "Standardized age and centered female indicator"
+  }
+
+  variable_1_model <- stats::lm(
+    stats::reformulate(control_variables, response = variable_1),
+    data = participant_data
+  )
+  variable_2_model <- stats::lm(
+    stats::reformulate(control_variables, response = variable_2),
+    data = participant_data
+  )
+
+  variable_1_residuals <- stats::residuals(variable_1_model)
+  variable_2_residuals <- stats::residuals(variable_2_model)
+  partial_r <- stats::cor(variable_1_residuals, variable_2_residuals)
+
+  n_participants <- length(variable_1_residuals)
+  number_of_controls <- length(control_variables)
+  degrees_of_freedom <- n_participants - number_of_controls - 2
+  t_value <- partial_r * sqrt(
+    degrees_of_freedom / (1 - partial_r^2)
+  )
+  p_value <- 2 * stats::pt(
+    -abs(t_value),
+    df = degrees_of_freedom
+  )
+
+  # Fisher's z transformation supplies an approximate 95% confidence interval
+  # for a partial correlation with the appropriate number of controls.
+  fisher_z <- atanh(partial_r)
+  fisher_standard_error <- 1 / sqrt(
+    n_participants - number_of_controls - 3
+  )
+  confidence_interval <- tanh(
+    fisher_z + c(-1, 1) * stats::qnorm(0.975) * fisher_standard_error
+  )
+
+  partial_correlation_results[[pair_number]] <- tibble::tibble(
+    variable_1 = variable_labels[1],
+    variable_2 = variable_labels[2],
+    correlation_type = "Partial Pearson correlation",
+    controls = control_description,
+    pearson_r = partial_r,
+    ci_low = confidence_interval[1],
+    ci_high = confidence_interval[2],
+    t_value = t_value,
+    degrees_of_freedom = degrees_of_freedom,
+    p_value = p_value,
+    n_participants = n_participants
+  )
+}
+
+partial_correlation_results <- dplyr::bind_rows(
+  partial_correlation_results
+) |>
+  dplyr::mutate(
+    p_fdr_bh = stats::p.adjust(p_value, method = "BH"),
+    p_adjustment_family = paste(
+      "All 10 age- and gender-adjusted pairwise partial correlations",
+      "among individual-difference measures"
+    )
+  )
+
+readr::write_csv(
+  partial_correlation_results,
+  file.path(
+    adjusted_results_directory,
+    "individual_difference_correlations.csv"
+  )
+)
+
 
 # -----------------------------------------------------------------------------
-# 12. Completion summary
+# 13. Completion summary
 # -----------------------------------------------------------------------------
 
 cat(
   "Behavioral analyses completed successfully.\n",
   "Participants: ", nrow(participant_data), "\n",
   "Responded trials: ", nrow(trial_data), "\n",
-  "Results directory: ", normalizePath(results_directory), "\n\n",
+  "Unadjusted results directory: ", normalizePath(results_directory), "\n",
+  "Age- and gender-adjusted results directory: ",
+  normalizePath(adjusted_results_directory), "\n\n",
   sep = ""
 )
 
 print(core_coefficient_table |>
+  dplyr::select(test, odds_ratio, odds_ratio_ci_low, odds_ratio_ci_high,
+                p_value, p_fdr_bh))
+
+cat("\nAge- and gender-adjusted core GLMM:\n")
+
+print(core_adjusted_coefficient_table |>
   dplyr::select(test, odds_ratio, odds_ratio_ci_low, odds_ratio_ci_high,
                 p_value, p_fdr_bh))
 
