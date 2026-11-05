@@ -775,14 +775,13 @@ adjusted_acceptance_plot_data <- adjusted_acceptance_plot_data |>
       labels = c("Social", "Nonsocial")
     ),
     mean_acceptance_rate = 100 * stats::plogis(adjusted_linear_predictor),
-    ci_low = 100 * stats::plogis(
-      adjusted_linear_predictor -
-        stats::qnorm(0.975) * adjusted_linear_predictor_se
-    ),
-    ci_high = 100 * stats::plogis(
-      adjusted_linear_predictor +
-        stats::qnorm(0.975) * adjusted_linear_predictor_se
-    ),
+    se_acceptance_rate =
+      100 *
+      stats::plogis(adjusted_linear_predictor) *
+      (1 - stats::plogis(adjusted_linear_predictor)) *
+      adjusted_linear_predictor_se,
+    sem_low = pmax(0, mean_acceptance_rate - se_acceptance_rate),
+    sem_high = pmin(100, mean_acceptance_rate + se_acceptance_rate),
     estimate_type = paste(
       "Core GLMM prediction at mean age and sample-average gender composition"
     )
@@ -791,8 +790,9 @@ adjusted_acceptance_plot_data <- adjusted_acceptance_plot_data |>
     fairness_level,
     partner_type,
     mean_acceptance_rate,
-    ci_low,
-    ci_high,
+    se_acceptance_rate,
+    sem_low,
+    sem_high,
     estimate_type
   )
 
@@ -819,7 +819,7 @@ adjusted_acceptance_plot <- ggplot2::ggplot(
     linewidth = 0.25
   ) +
   ggplot2::geom_errorbar(
-    ggplot2::aes(ymin = ci_low, ymax = ci_high),
+    ggplot2::aes(ymin = sem_low, ymax = sem_high),
     position = ggplot2::position_dodge(width = 0.78),
     width = 0.18,
     linewidth = 0.45
@@ -839,7 +839,7 @@ adjusted_acceptance_plot <- ggplot2::ggplot(
     y = "Adjusted acceptance rate",
     caption = paste(
       "Predicted at mean age and sample-average gender composition;",
-      "error bars are 95% confidence intervals."
+      "error bars are SEM."
     )
   ) +
   ggplot2::theme_classic(base_size = 12) +

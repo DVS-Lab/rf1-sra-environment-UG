@@ -378,15 +378,6 @@ johnson_neyman_plot <- ggplot2::ggplot(
     color = "gray25",
     linewidth = 0.7
   ) +
-  ggplot2::geom_rug(
-    data = participant_data,
-    ggplot2::aes(x = mspss_sum),
-    inherit.aes = FALSE,
-    sides = "b",
-    color = "gray35",
-    alpha = 0.35,
-    linewidth = 0.45
-  ) +
   ggplot2::scale_color_manual(
     values = c(
       "Significant" = "#28E2E5",
