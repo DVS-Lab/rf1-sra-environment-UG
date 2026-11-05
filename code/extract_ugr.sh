@@ -7,12 +7,12 @@ sublist=${basedir}/code/L3-act-subjects.txt
 task="ugr"
 model="3"
 sm="5"
-mask=${basedir}/masks/pm25xmspss_cope12_mask.nii.gz
+mask=${basedir}/masks/adixmspss_cope12_mask.nii.gz
 upstreamdir=/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl-no-tedana-age55
 
 # Output directory for the meants text files
-outputdir=${basedir}/derivatives/extractions/pm25xmspss_cope12_ugr_meants
-log=${basedir}/code/pm25xmspss_cope12_ugr_meants_log.txt
+outputdir=${basedir}/derivatives/extractions/adixmspss_cope12_ugr_meants
+log=${basedir}/code/adixmspss_cope12_ugr_meants_log.txt
 mkdir -p $outputdir
 
 # Loop through each subject
@@ -29,7 +29,7 @@ for sub in `cat ${basedir}/code/L3-act-subjects.txt`; do
   # Check if the data file exists
   if [ -f "$DATA" ]; then   
      echo "Extracting L2 signal for subject: ${sub}" >> $log
-    OUTPUT="${outputdir}/sub-${sub}_L2_pm25xmspss_meants.txt" 
+    OUTPUT="${outputdir}/sub-${sub}_L2_adixmspss_meants.txt" 
     fslmeants -i $DATA -o $OUTPUT -m $mask
    	
     chmod 777 $OUTPUT
@@ -39,7 +39,7 @@ for sub in `cat ${basedir}/code/L3-act-subjects.txt`; do
   	
    if [ -f "$DATArun1" ]; then
    	 echo "Extracting run1 signal for subject: ${sub}" >> $log
-   	 OUTPUT="${outputdir}/sub-${sub}_run-1_pm25xmspss_meants.txt"
+   	 OUTPUT="${outputdir}/sub-${sub}_run-1_adixmspss_meants.txt"
    	 fslmeants -i $DATArun1 -o $OUTPUT -m $mask
 
 
@@ -49,7 +49,7 @@ for sub in `cat ${basedir}/code/L3-act-subjects.txt`; do
    fi
  	if [ -f "$DATArun2" ]; then
    	 echo "Extracting run2 signal for subject: ${sub}" >> $log
-   	 OUTPUT="${outputdir}/sub-${sub}_run-2_pm25xmspss_meants.txt"
+   	 OUTPUT="${outputdir}/sub-${sub}_run-2_adixmspss_meants.txt"
    	 fslmeants -i $DATArun2 -o $OUTPUT -m $mask
  
 
